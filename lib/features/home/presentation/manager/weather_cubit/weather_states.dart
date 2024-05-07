@@ -1,4 +1,4 @@
-import 'package:weather_app/features/home_view/data/Models/weather_model.dart';
+import 'package:weather_app/features/home/data/Models/weather_model.dart';
 
 abstract class WeatherStates {}
 

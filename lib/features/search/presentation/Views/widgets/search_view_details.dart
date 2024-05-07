@@ -2,15 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/core/utils/style.dart';
 import 'package:weather_app/core/utils/widget/gradient_background.dart';
-import 'package:weather_app/features/home_view/presentation/manager/cubits/get_weather_cubit/weather_cubit.dart';
-import 'package:weather_app/features/search_view/presentation/Views/widgets/custom_text_field.dart';
+import 'package:weather_app/features/home/presentation/manager/weather_cubit/weather_cubit.dart';
+import 'package:weather_app/features/search/presentation/Views/widgets/custom_text_field.dart';
 
 // ignore: must_be_immutable
-class SearchViewDetails extends StatelessWidget {
-  SearchViewDetails({super.key});
+class SearchViewDetails extends StatefulWidget {
+  const SearchViewDetails({super.key});
+
+  @override
+  State<SearchViewDetails> createState() => _SearchViewDetailsState();
+}
+
+class _SearchViewDetailsState extends State<SearchViewDetails> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   static final TextEditingController controller = TextEditingController();
   static AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+
   @override
   Widget build(BuildContext context) {
     return GradientBackground(
@@ -44,27 +51,35 @@ class SearchViewDetails extends StatelessWidget {
                 child: CustomTextField(
                   controller: controller,
                   onSubmitted: (value) {
-                    if (formKey.currentState!.validate()) {
-                      BlocProvider.of<GetWeatherCubit>(context)
-                          .getWeatherCubit(city: controller.text);
-                      Navigator.pop(context);
-                    } else {
-                      autovalidateMode = AutovalidateMode.always;
-                    }
+                    triggerCubit(context);
                   },
                   onPressedSuffixIcon: () {
-                    if (formKey.currentState!.validate()) {
-                      BlocProvider.of<GetWeatherCubit>(context)
-                          .getWeatherCubit(city: controller.text);
-                      Navigator.pop(context);
-                    } else {
-                      autovalidateMode = AutovalidateMode.always;
-                    }
+                    triggerCubit(context);
                   },
                 )),
           ),
         ),
       ),
     );
+  }
+
+  void triggerCubit(BuildContext context) {
+    if (validated()) {
+      BlocProvider.of<GetWeatherCubit>(context)
+          .getWeatherCubit(city: controller.text);
+      Navigator.pop(context);
+    } else {
+      setState(() {
+        autovalidateMode = AutovalidateMode.always;
+      });
+    }
+  }
+
+  bool validated() => formKey.currentState!.validate() ? true : false;
+
+  @override
+  void dispose() {
+    super.dispose();
+    controller.dispose();
   }
 }

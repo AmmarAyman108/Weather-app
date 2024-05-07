@@ -4,11 +4,11 @@ import 'package:weather_app/core/utils/style.dart';
 import 'package:weather_app/core/utils/widget/custom_error_widget.dart';
 import 'package:weather_app/core/utils/widget/custom_loading_indicator.dart';
 import 'package:weather_app/core/utils/widget/gradient_background.dart';
-import 'package:weather_app/features/search_view/presentation/Views/search_view.dart';
-import 'package:weather_app/features/home_view/presentation/manager/cubits/get_weather_cubit/weather_cubit.dart';
-import 'package:weather_app/features/home_view/presentation/manager/cubits/get_weather_cubit/weather_states.dart';
-import 'package:weather_app/features/home_view/presentation/view/widgets/no_weather.dart';
-import 'package:weather_app/features/home_view/presentation/view/widgets/weather_details.dart';
+import 'package:weather_app/features/search/presentation/Views/search_view.dart';
+import 'package:weather_app/features/home/presentation/manager/weather_cubit/weather_cubit.dart';
+import 'package:weather_app/features/home/presentation/manager/weather_cubit/weather_states.dart';
+import 'package:weather_app/features/home/presentation/view/widgets/no_weather.dart';
+import 'package:weather_app/features/home/presentation/view/widgets/weather_details.dart';
 
 // ignore: must_be_immutable
 class HomeView extends StatelessWidget {

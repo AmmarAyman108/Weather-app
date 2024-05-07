@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/features/search_view/presentation/Views/widgets/search_view_details.dart';
+import 'package:weather_app/features/search/presentation/Views/widgets/search_view_details.dart';
 
 // ignore: must_be_immutable
 class SearchView extends StatelessWidget {
@@ -7,6 +7,6 @@ class SearchView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SearchViewDetails();
+    return const SearchViewDetails();
   }
 }

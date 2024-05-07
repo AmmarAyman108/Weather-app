@@ -1,4 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:weather_app/core/utils/color.dart';
 
 class GradientBackground extends StatelessWidget {
   const GradientBackground({super.key, required this.child});
@@ -8,10 +10,11 @@ class GradientBackground extends StatelessWidget {
     return Container(
         decoration: const BoxDecoration(
             gradient: LinearGradient(colors: [
-          Color.fromARGB(255, 4, 44, 78),
-          Color.fromARGB(255, 0, 66, 121),
-          Color.fromARGB(255, 0, 100, 182),
-        ], begin: Alignment.center, end: Alignment.bottomCenter)),
+      AppColor.blueGradient10,
+      AppColor.blueGradient8,
+      AppColor.blueGradient3,
+
+              ], begin: Alignment.center, end: Alignment.bottomCenter)),
         child: child);
   }
 }

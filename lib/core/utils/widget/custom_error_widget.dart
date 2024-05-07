@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:weather_app/core/utils/color.dart';
 import 'package:weather_app/core/utils/style.dart';
 
 class CustomErrorWidget extends StatelessWidget {
@@ -14,7 +15,7 @@ class CustomErrorWidget extends StatelessWidget {
       child: Text(
         errorMessage,
         style: Style.textStyle20
-            .copyWith(color: const Color.fromARGB(255, 255, 17, 0)),
+            .copyWith(color: AppColor.red),
       ),
     );
   }

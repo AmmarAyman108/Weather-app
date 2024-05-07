@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/core/utils/style.dart';
-import 'package:weather_app/features/home_view/data/Models/weather_model.dart';
+import 'package:weather_app/features/home/data/Models/weather_model.dart';
 
 class WeatherDetails extends StatelessWidget {
   const WeatherDetails({

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/core/utils/style.dart';
-import 'package:weather_app/features/search_view/presentation/Views/search_view.dart';
+import 'package:weather_app/features/search/presentation/Views/search_view.dart';
 
 class NoWeather extends StatelessWidget {
   const NoWeather({
