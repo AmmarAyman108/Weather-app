@@ -12,7 +12,12 @@ class HomeRepoImpl extends HomeRepo {
       {required String city}) async {
     try {
       var jsonData = await Api().get(
-          endPoint: '/forecast.json?key=${Settings.apiKey}&q=$city&days=7');
+          endPoint: '/forecast.json',
+          queryParameters: {
+            "key": "${Settings.apiKey}",
+            "q": "$city",
+            "days": "7"
+          });
 
       return right(WeatherModel.fromJason(jsonData));
     } on DioException catch (e) {
