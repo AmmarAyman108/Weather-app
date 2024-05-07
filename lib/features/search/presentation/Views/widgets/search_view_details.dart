@@ -76,10 +76,4 @@ class _SearchViewDetailsState extends State<SearchViewDetails> {
   }
 
   bool validated() => formKey.currentState!.validate() ? true : false;
-
-  @override
-  void dispose() {
-    super.dispose();
-    controller.dispose();
-  }
 }
