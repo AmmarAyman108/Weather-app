@@ -21,11 +21,11 @@ class WeatherDetails extends StatelessWidget {
             flex: 3,
           ),
           Text(
-            ' ${weatherData!.location}',
-            style:  Style.textStyle32,
+            ' ${weatherData?.location}',
+            style: Style.textStyle32,
           ),
           Text(
-            'Updated: ${weatherData!.date}',
+            'Updated: ${weatherData?.date}',
             style: Style.textStyle20,
           ),
           const Spacer(),
@@ -33,20 +33,20 @@ class WeatherDetails extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Image.network(
-                'https:${weatherData!.image}',
+                'https:${weatherData?.image ?? '//cdn.weatherapi.com/weather/64x64/day/116.png'}',
               ),
               Text(
-                '${weatherData!.temp}ْ',
+                '${weatherData?.temp}ْ',
                 style: Style.textStyle40,
               ),
               Column(
                 children: [
                   Text(
-                    'maxTemp : ${weatherData!.maxTemp}',
+                    'maxTemp : ${weatherData?.maxTemp}',
                     style: Style.textStyle20,
                   ),
                   Text(
-                    'minTemp : ${weatherData!.minTemp}',
+                    'minTemp : ${weatherData?.minTemp}',
                     style: Style.textStyle20,
                   ),
                 ],
@@ -55,7 +55,7 @@ class WeatherDetails extends StatelessWidget {
           ),
           const Spacer(),
           Text(
-            '${weatherData!.state}',
+            '${weatherData?.state}',
             style: Style.textStyle32,
           ),
           const Spacer(

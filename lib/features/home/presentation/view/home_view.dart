@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import 'package:weather_app/core/utils/style.dart';
 import 'package:weather_app/core/utils/widget/custom_error_widget.dart';
 import 'package:weather_app/core/utils/widget/custom_loading_indicator.dart';
@@ -17,46 +18,46 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GradientBackground(
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          title: const Text(
-            'Weather Cloud',
-            style: Style.textStyle28,
-          ),
-          centerTitle: true,
-          actions: [
-            IconButton(
-              icon: const Icon(
-                Icons.search,
-                size: 31,
-                color: Colors.white,
+        child: Scaffold(
+            backgroundColor: Colors.transparent,
+            appBar: AppBar(
+              backgroundColor: Colors.transparent,
+              title: const Text(
+                'Weather Cloud',
+                style: Style.textStyle28,
               ),
-              onPressed: () => Navigator.of(context).push<void>(
-                MaterialPageRoute(
-                  builder: (context) => const SearchView(),
-                ),
-              ),
-            )
-          ],
-        ),
-        body: BlocBuilder<GetWeatherCubit, WeatherStates>(
-          builder: (context, state) {
-            if (state is InitialState) {
-              return const NoWeather();
-            } else if (state is WeatherFailureState) {
-              return CustomErrorWidget(
-                errorMessage: state.errorMessage,
-              );
-            } else if (state is WeatherLoadedState) {
-              return WeatherDetails(weatherData: state.weather);
-            } else {
-              return const CustomLoadingIndicator();
-            }
-          },
-        ),
-      ),
-    );
+              centerTitle: true,
+              actions: [
+                IconButton(
+                  icon: const Icon(
+                    Icons.search,
+                    size: 31,
+                    color: Colors.white,
+                  ),
+                  onPressed: () => Navigator.of(context).push<void>(
+                    MaterialPageRoute(
+                      builder: (context) => const SearchView(),
+                    ),
+                  ),
+                )
+              ],
+            ),
+            body: BlocBuilder<GetWeatherCubit, WeatherStates>(
+                builder: (context, state) {
+              if (state is InitialState) {
+                return const NoWeather();
+              } else if (state is WeatherFailureState) {
+                return CustomErrorWidget(
+                  errorMessage: state.errorMessage,
+                );
+              } else if (state is WeatherLoadedState) {
+                return WeatherDetails(weatherData: state.weather);
+              } else {
+                return Skeletonizer(
+                    enabled:
+                        true, // Skeleton effect will be shown in loading state
+                    child: WeatherDetails(weatherData: null));
+              }
+            })));
   }
 }
